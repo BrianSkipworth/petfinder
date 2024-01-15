@@ -11,7 +11,22 @@ Schedule the function to run as frequently as needed, for most scenarios a night
 
 ## Set Up
 
-On AWS create a new S3 bucket and select Access: Public. 
+On AWS create a new S3 bucket and select Access: Public. The following Bucket Policy allows anyone to view the page.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::herdandflock/*"
+        }
+    ]
+}
+```
 
 Next create a new Lambda function. The code in lambda.py can be copy-pasted on the Code tab in the Lambda screen, though a few additional steps will be required to add external Python libraries to the Lambda function's runtime environment. Also, to avoid a current issue with a conflict between a necessary library and AWS's boto3 SDK, we have to revert the library to an older version before deploying the Lambda function.
 
@@ -44,6 +59,13 @@ Almost all configuration details that are specific to the rescue organization ar
 | ORG | The sanctuary's Organization ID on Petfinder in lowercase, e.g. 'ca3085' |
 | FORM | Full URL of the adoption form including the query param ?animal_name= |
 
+When you have added all of the necessary variables, the Configuration tab will appear as follows.
+
+<figure>
+    <img src="https://herdandflock.s3.us-west-1.amazonaws.com/herd+and+flock+petfinder+lambda+vars.png" width="600"
+         alt="Complete Environment Variables">
+    <figcaption></figcaption>
+</figure>
 
 In the function code we begin by retrieving these environment variables.
 
