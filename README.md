@@ -60,5 +60,3 @@ The rest of the function code is thoroughly commented.
 ---
 ## Planned Enhancements
 The Petfetcher function would be easier to monitor if it had built-in alerting to send someone an email when an attempted fetch fails for any reason, and AWS SES service can be used do this.
-
-In configuring SES for the first time, a Medium articule 
