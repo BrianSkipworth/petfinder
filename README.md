@@ -77,7 +77,15 @@ default_img = os.environ['IMG'] # URL of an image to show if none is available f
 form_url = os.environ['FORM'] # Full URL of the adoption form including the query param ?animal_name=
 org_id = os.environ['ORG'] # The sanctuary's Organization ID on Petfinder in lowercase, e.g. 'ca3085'
 ```
-The rest of the function code is thoroughly commented. 
+
+### Styling
+The remaining configuration is optional, but recommended to make the adoption list match the style of the rescue organization's website.
+
+Within the definition of `make_html` there is hard-coded CSS styling. Where the variable `html` is instantiated, edit the code following `style=` to make the buttons shape and color match the website. 
+
+You may also want to choose a different button label, which is hardcoded into the variable named `para` to display "Apply to Adopt" on the buttons.
+
+Ready to fetch!
 
 ---
 ## Planned Enhancements
