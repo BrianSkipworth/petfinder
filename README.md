@@ -1,7 +1,7 @@
 # :rabbit: Petfetcher
 #### _An AWS Lambda function written in Python to get the pets listed on Petfinder.com that are available for adoption from a specific animal rescue organization_
 
-This script generates a static web page that can be shown inside an iframe on the organization's existing website. See the example page for [Herd and Flock Animal Sanctuary](https://herdandflock.s3.us-west-1.amazonaws.com/animals.html). 
+This script generates a static web page that can be shown inside an iframe on the organization's existing website. See the example page for <a href="https://herdandflock.s3.us-west-1.amazonaws.com/animals.html" target="_blank">Herd and Flock Animal Sanctuary</a> (opens in a new tab). 
 
 Schedule the function to run as frequently as needed, for most scenarios a nightly run is adequate and the rescue staff can expect that any animals they add to Petfinder will appear on the website the following day. This script uses only AWS services, including:
 
@@ -30,9 +30,9 @@ On AWS create a new S3 bucket and select Access: Public. The following Bucket Po
 
 Next create a new Lambda function. The code in lambda.py can be copy-pasted on the Code tab in the Lambda screen, though a few additional steps will be required to add external Python libraries to the Lambda function's runtime environment. Also, to avoid a current issue with a conflict between a necessary library and AWS's boto3 SDK, we have to revert the library to an older version before deploying the Lambda function.
 
-Complete Step 1 described in the Medium post [How to add External Python Libraries to AWS Lambda](https://medium.com/@gauravkachariya/how-to-add-external-python-libraries-to-aws-lambda-499674113fb7)
+Complete Step 1 described in the Medium post <a href="https://medium.com/@gauravkachariya/how-to-add-external-python-libraries-to-aws-lambda-499674113fb7" target="_blank">How to add External Python Libraries to AWS Lambda</a> (opens in a new tab).
 
-Before moving on to Step 2, remove the directory for the package `urllib3` which the requests library has installed as a dependency. Then, manually re-install an older version using the command `pip install --upgrade urllib3==1.26.18 -t .`
+Before moving on to Step 2, remove the directory for the package `urllib3` which the requests library has installed as a dependency. Then, manually re-install an older version using the command `pip install --upgrade urllib3==1.26.18 -t .` This extra step is necessary to workaround a conflict between urllib3 and Amazon's boto3 SDK.
 
 ```
 (venv) [cloudshell-user@ip-10-6-25-93 python]$ pip install --upgrade urllib3==1.26.18 -t .
@@ -41,12 +41,12 @@ Collecting urllib3==1.26.18
 Installing collected packages: urllib3
 Successfully installed urllib3-1.26.18
 ```
-Now move on and complete Steps 2 and 3.
+Now complete Steps 2 and 3.
 
 
 ### Petfinder API
 You will need to generate a client and secret. Sign up on their site to get your credentials: https://www.petfinder.com/user/developer-settings/
-[Petfinder API Docs](https://www.petfinder.com/developers/v2/docs/)
+ <a href="https://www.petfinder.com/developers/v2/docs/" target="_blank">Petfinder API Docs</a>
 
 ### Environment Variables
 Almost all configuration details that are specific to the rescue organization are stored in environment variables, with the exception of style code to make the generated web page match the rescue's existing website (styling is hardcoded). This enables the script can be set up for a new rescue organization quickly and allows information that may change frequently to be updated without needing to edit the code.
