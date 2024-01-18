@@ -1,7 +1,7 @@
 # :rabbit: Petfetcher
 #### _An AWS Lambda function written in Python to get the pets listed on Petfinder.com that are available for adoption from a specific animal rescue organization_
 
-This script generates a static web page that can be shown inside an iframe on the organization's existing website. See the example page for <a href="https://herdandflock.s3.us-west-1.amazonaws.com/animals.html" target="_blank">Herd and Flock Animal Sanctuary</a>. 
+This script generates a static web page that can be shown inside an iframe on the organization's existing website. See the example inner page this generates for <a href="https://herdandflock.s3.us-west-1.amazonaws.com/animals.html" target="_blank">Herd and Flock Animal Sanctuary</a>. 
 
 Schedule the function to run as frequently as needed, for most scenarios a nightly run is adequate and the rescue staff can expect that any animals they add to Petfinder will appear on the website the following day. This script uses only AWS services, including:
 
